@@ -54,6 +54,7 @@ type Duck struct {
 func (d *Duck) PerformQuack()             { d.quackBehavior.quack() }
 func (d *Duck) PerformFly()               { d.flyBehavior.fly() }
 func (d *Duck) Swin()                     { fmt.Println("all ducks float, even decoys!") }
+func (d *Duck) Display()                  { fmt.Println("i just a duck") }
 func (d *Duck) SetQuack(qb quackBehavior) { d.quackBehavior = qb }
 func (d *Duck) SetFly(fb flyBehavior)     { d.flyBehavior = fb }
 
@@ -70,6 +71,7 @@ func NewModelDuck() Ducker {
 		},
 	}
 }
+
 func (md *ModelDuck) Display() {
 	fmt.Println("i am a model duck")
 }
