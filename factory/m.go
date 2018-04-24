@@ -3,29 +3,29 @@ package main
 import "fmt"
 
 type namer interface {
-	name() string
+	Name() string
 }
-type animal interface {
+type Animal interface {
 	namer
-	hi()
+	Hi()
 }
 
-type Animal struct{ namer }
+type animal struct{ namer }
 
-func (b *Animal) hi() { fmt.Println("hi,", b.name()) }
+func (a *animal) Hi() { fmt.Println("Hi,", a.Name()) }
 
 type dog struct{}
 
-func (a *dog) name() string { return "doge" }
-func NewDog() animal        { return &Animal{&dog{}} }
+func NewDog() Animal        { return &animal{&dog{}} }
+func (a *dog) Name() string { return "doge" }
 
 type cat struct{}
 
-func (a *cat) name() string { return "kitty" }
-func NewCat() animal        { return &Animal{&cat{}} }
+func NewCat() Animal        { return &animal{&cat{}} }
+func (a *cat) Name() string { return "kitty" }
 
 func main() {
-	var d, c animal = NewDog(), NewCat()
-	d.hi()
-	c.hi()
+	var d, c Animal = NewDog(), NewCat()
+	d.Hi()
+	c.Hi()
 }
